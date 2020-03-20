@@ -1,6 +1,6 @@
 #! /bin/sh
 APPDIR="/srv/rrshareweb"
-if [ ! -f "/mnt/conf" ]; then
+if [ ! -f "/mnt/conf/rrshare.db" ]; then
     mkdir -p /mnt/conf
     cp -r $APPDIR/conf_/* /mnt/conf/
     ln -s /mnt/conf $APPDIR/conf
