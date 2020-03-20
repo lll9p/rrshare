@@ -10,7 +10,7 @@ ENV TZ=Asia/Shanghai
 ENV APPDIR="/srv/rrshareweb"
 
 RUN apk add --no-cache libstdc++ libc6-compat su-exec \
-    && apk --no-cache add tzdata \
+    && apk add --no-cache tzdata \
 	&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 	&& echo 'Asia/Shanghai' >  /etc/timezone \
     && wget https://github.com/lll9p/rrshare/raw/master/rrshareweb_centos7.tar.gz \
@@ -21,7 +21,7 @@ RUN apk add --no-cache libstdc++ libc6-compat su-exec \
     && chmod a+x $APPDIR/start.sh \
     && mkdir -p /mnt/conf \
     && mkdir -p /opt/work/store \
-    && apk del wget tzdata
+    && apk del tzdata
 
 
 WORKDIR /
