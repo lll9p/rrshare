@@ -9,10 +9,10 @@ LABEL build_version="version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 ENV TZ=Asia/Shanghai
 ENV APPDIR="/srv/rrshareweb"
 
-RUN addgroup -S rrshare \
-    && adduser -S rrshare -G rrshare -D -H \
-    && echo "**** install packages ****" \
-    && apk add --no-cache libstdc++ libc6-compat su-exec \
+RUN apk add --no-cache libstdc++ libc6-compat su-exec \
+    && apk --no-cache add tzdata \
+	&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& echo 'Asia/Shanghai' >  /etc/timezone \
     && wget https://github.com/lll9p/rrshare/raw/master/rrshareweb_centos7.tar.gz \
 	&& tar zxvf /rrshareweb_centos7.tar.gz -C /srv/ \
 	&& rm -rf /rrshareweb_centos7.tar.gz \
@@ -20,7 +20,8 @@ RUN addgroup -S rrshare \
     && wget https://github.com/lll9p/rrshare/raw/master/start.sh -O $APPDIR/start.sh \
     && chmod a+x $APPDIR/start.sh \
     && mkdir -p /mnt/conf \
-    && mkdir -p /opt/work/store
+    && mkdir -p /opt/work/store \
+    && apk del wget tzdata
 
 
 WORKDIR /
