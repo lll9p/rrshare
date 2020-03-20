@@ -1,7 +1,6 @@
-LABEL MAINTAINER="lll9p <https://imtho.com>"
-
 FROM alpine:latest
 
+LABEL MAINTAINER="lll9p <https://imtho.com>"
 # set version label
 ARG BUILD_DATE
 ARG VERSION
