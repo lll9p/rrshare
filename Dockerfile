@@ -16,6 +16,7 @@ RUN addgroup -S rrshare -g $PGID \
     && echo "**** install packages ****" \
     && apk add --no-cache libstdc++ libc6-compat su-exec \
     && wget https://github.com/lll9p/rrshare/raw/master/rrshareweb_centos7.tar.gz \
+    && mkdir /rrshare \
 	&& tar zxvf /rrshareweb_centos7.tar.gz -C /rrshare/ \
 	&& rm -rf /rrshareweb_centos7.tar.gz \
     && mv /rrshare/rrshareweb/conf /rrshare/rrshareweb/conf_ \
