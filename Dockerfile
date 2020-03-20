@@ -7,13 +7,10 @@ ARG VERSION
 LABEL build_version="version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 ENV TZ=Asia/Shanghai
-ENV PUID=1000
-ENV PGID=1000
 ENV APPDIR="/srv/rrshareweb"
 
-RUN addgroup -S rrshare -g $PGID \
-    && ls -al . \
-    && adduser -S rrshare -G rrshare -D -H -u $PUID \
+RUN addgroup -S rrshare \
+    && adduser -S rrshare -G rrshare -D -H \
     && echo "**** install packages ****" \
     && apk add --no-cache libstdc++ libc6-compat su-exec \
     && wget https://github.com/lll9p/rrshare/raw/master/rrshareweb_centos7.tar.gz \
