@@ -20,6 +20,8 @@ RUN addgroup -S rrshare -g $PGID \
 	&& tar zxvf /rrshareweb_centos7.tar.gz -C /rrshare/ \
 	&& rm -rf /rrshareweb_centos7.tar.gz \
     && mv /rrshare/rrshareweb/conf /rrshare/rrshareweb/conf_ \
+    && wget https://github.com/lll9p/rrshare/raw/master/start.ssh \
+    && chmod a+x start.ssh \
     && mkdir -p /mnt/config \
     && mkdir -p /mnt/store
 
