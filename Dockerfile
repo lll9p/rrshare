@@ -27,4 +27,4 @@ WORKDIR /
 # ports and volumes
 EXPOSE 3001 6714 30210
 VOLUME ["/mnt/config","/opt/work/store"]
-ENTRYPOINT ["$APPDIR/start.sh"]
+ENTRYPOINT ["/srv/rrshareweb/start.sh"]
