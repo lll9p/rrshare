@@ -11,18 +11,20 @@ ENV TZ=Asia/Shanghai
 ENV PUID=1000
 ENV PGID=1000
 
-RUN addgroup -S rrshare -g $PGID && adduser -S rrshare -G rrshare -D -H -u $PUID \
+RUN addgroup -S rrshare -g $PGID \
+    && adduser -S rrshare -G rrshare -D -H -u $PUID \
     && echo "**** install packages ****" \
     && apk add --no-cache libstdc++ libc6-compat su-exec \
 	&& tar zxvf /rrshareweb_centos7.tar.gz -C /rrshare/ \
 	&& rm -rf /rrshareweb_centos7.tar.gz \
     && mv /rrshare/rrshareweb/conf /rrshare/rrshareweb/conf_ \
-    && mkdir -p /mnt/data
+    && mkdir -p /mnt/config \
+    && mkdir -p /mnt/store
 
 # copy local files
 WORKDIR /
 
 # ports and volumes
 EXPOSE 3001 6714 30210
-VOLUME ["/mnt/data"]
+VOLUME ["/mnt/config","/mnt/store"]
 ENTRYPOINT ["/start.sh"]
