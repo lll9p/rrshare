@@ -14,8 +14,8 @@ RUN apk add --no-cache libstdc++ libc6-compat su-exec \
 	&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 	&& echo "Asia/Shanghai" > /etc/timezone \
     && wget https://github.com/lll9p/rrshare/raw/master/rrshareweb_linux_2.20.tar.gz \
-	&& tar zxvf /rrshareweb_centos7.tar.gz -C /srv/ \
-	&& rm -rf /rrshareweb_centos7.tar.gz \
+	&& tar zxvf /rrshareweb_linux_2.20.tar.gz -C /srv/ \
+	&& rm -rf /rrrshareweb_linux_2.20.tar.gz \
     && mv $APPDIR/conf $APPDIR/conf_ \
     && wget https://github.com/lll9p/rrshare/raw/master/start.sh -O $APPDIR/start.sh \
     && chmod a+x $APPDIR/start.sh \
