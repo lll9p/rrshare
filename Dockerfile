@@ -17,6 +17,7 @@ RUN apk add --no-cache libstdc++ libc6-compat su-exec \
 	&& tar zxvf /rrshareweb_linux_2.20.tar.gz -C /srv/ \
 	&& rm -rf /rrrshareweb_linux_2.20.tar.gz \
     && mv $APPDIR/conf $APPDIR/conf_ \
+    && rm -rf $APPDIR/conf/rrshare.db \
     && wget https://github.com/lll9p/rrshare/raw/master/start.sh -O $APPDIR/start.sh \
     && chmod a+x $APPDIR/start.sh \
     && mkdir -p /mnt/conf \
